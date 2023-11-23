@@ -1,10 +1,34 @@
-<!DOCTYPE html>
-<html lang="en">
-<head>
-  <meta charset="UTF-8">
-  <title>$Title$</title>
-</head>
-<body>
-$END$
-</body>
-</html>
+{% extends 'base.html' %}
+{% block content %}
+<div class="main-page">
+
+    <div class="Categories">
+        <h1>Browse Tropics</h1>
+
+        <a href="">Create Topics</a>
+
+        {% for c in cats %}
+            <p><a href="categoriy/{{ c.id }}">{{ c.cat_name }}</a></p>
+        {% endfor %}
+    </div>
+    <div class="rooms">
+    {% for i in rms %}
+        <a href="{% url 'update-room' i.pk %}">Update</a>
+        <a href="{% url 'delete-room' i.pk %}">Delete</a>
+        <h3>@{{ i.user.username }}</h3>
+        <p>{{ i.created |date:"d M, Y || H:i:s"}}</p>
+        <h2>{{ i.title }}[{{i.category}}]</h2>
+        <p>{{ i.content|truncatewords:3 }}</p>
+        <hr>
+        <br>
+    {% endfor %}
+    </div>
+</div>
+
+
+{% endblock %}
+
+
+
+
+

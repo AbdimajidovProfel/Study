@@ -1,0 +1,13 @@
+{% extends 'base.html' %}
+
+{% block content %}
+	
+<form method="post" action="">
+    {% csrf_token %}
+    <h3>shuni rostanam o'chirmoqchimisiz</h3>
+    <h5>{{ obj.title }}</h5>
+    <h5>{{ obj.content }}</h5>
+    <input type="submit" value="Confirm">
+        <a href="{{ request.META.HTTP_REFERER }}"> Go Back</a>
+</form>
+{% endblock %}

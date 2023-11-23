@@ -1,0 +1,18 @@
+{% extends "base.html" %}
+
+{% block content %}
+
+<a href="{% url 'home' %}">Home</a>
+
+<h1>Current category: {{ crc.cat_name }}</h1>
+
+{% for i in rms %}
+    <h2>{{ i.title }}</h2>
+    <p>{{ i.content }}</p>
+    <p>{{ i.created |date:"d M, Y || H:i:s"}}</p>
+    <hr>
+    <br>
+
+{% endfor %}
+
+{% endblock %}
